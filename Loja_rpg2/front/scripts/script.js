@@ -18,14 +18,14 @@ async function getProducts() {
 }
 
 async function renderProducts() {
-  const products = await getProducts();  // busca os dados do JSON ou API
-  const container = document.getElementById('product-list');  // pega o container no HTML
+  const products = await getProducts();  
+  const container = document.getElementById('product-list');  
   if (!container) return;
 
-  container.innerHTML = '';  // limpa conteúdo antigo
+  container.innerHTML = '';  
 
   products.forEach(product => {
-    const div = document.createElement('div');   // cria uma div para cada produto
+    const div = document.createElement('div');   
     div.className = 'product';
     div.innerHTML = `
       <img src="${product.image || 'placeholder.png'}" alt="${product.name}" width="200" />
@@ -33,7 +33,7 @@ async function renderProducts() {
       <p>${product.description || 'Sem descrição'}</p>
       <p><b>Preço:</b> R$ ${parseFloat(product.price).toFixed(2)}</p>
     `;
-    container.appendChild(div);  // adiciona essa div no container principal
+    container.appendChild(div);  
   });
 }
 
@@ -116,5 +116,5 @@ document.addEventListener('DOMContentLoaded', () => {
 getProducts();
 // saveProduct();
 // remove_product_at(3);
-getProducts();
-console.log("Oi")
+// getProducts();
+// console.log("Oi")
