@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "name": "Dado d20",
+    "description": "A lightweight wireless mouse with ergonomic design.",
+    "price": 25.99,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 2,
+    "name": "Dado d8",
+    "description": "RGB backlit keyboard with blue switches.",
+    "price": 59.99,
+    "image": "placeholder.png"
+  },
+  {
+    "id": 4,
+    "name": "",
+    "description": "",
+    "price": 0.0,
+    "image": ""
+  },
+  {
+    "id": 5,
+    "name": "dado d6",
+    "description": "um dado de 6 faces",
+    "price": 3.0,
+    "image": ""
+  },
+  {
+    "id": 6,
+    "name": "kit 50 fichas",
+    "description": "um kit de 50 fichas para usar em jogos de mesa",
+    "price": 15.0,
+    "image": ""
+  },
+  {
+    "id": 7,
+    "name": "Porduto 5",
+    "description": "Descricao 5",
+    "price": 100.0,
+    "image": ""
+  },
+  {
+    "id": 8,
+    "name": "produto 6",
+    "description": "descricao 6",
+    "price": 10.0,
+    "image": ""
+  },
+  {
+    "id": 9,
+    "name": "Action figure Elfo 1/16",
+    "description": "Action figure de elfo em escala 1/16",
+    "price": 50.0,
+    "image": ""
+  },
+  {
+    "id": 10,
+    "name": "Boneco elfo assasino 1/16",
+    "description": "Um boneco de um elfo em escala 1/16, sem pintura",
+    "price": 18.5,
+    "image": "C:\\Users\\enzo_\\Documents\\loja-de-itens-de-rpg-main\\loja-de-itens-de-rpg-main\\Loja_rpg2\\front\\imgs\\images.jpeg"
+  },
+  {
+    "id": 11,
+    "name": "Produto super mega epico",
+    "description": "Descricao epico demais maluco",
+    "price": 69.69,
+    "image": ""
+  }
+]
