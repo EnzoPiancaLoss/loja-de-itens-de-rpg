@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "name": "Dado d20",
-    "description": "A lightweight wireless mouse with ergonomic design.",
-    "price": 25.99,
+    "name": "a",
+    "description": "aaaaaaa",
+    "price": 900.0,
     "image": "placeholder.png"
   },
   {
@@ -68,5 +68,12 @@
     "description": "Descricao epico demais maluco",
     "price": 69.69,
     "image": ""
+  },
+  {
+    "id": 12,
+    "name": "item ",
+    "description": "nada",
+    "price": 69.69,
+    "image": "placeholder.png"
   }
 ]

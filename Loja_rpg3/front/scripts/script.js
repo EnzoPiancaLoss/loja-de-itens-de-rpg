@@ -37,6 +37,8 @@ async function renderProducts() {
   });
 }
 
+
+
 async function saveProduct(class_object) {
   try {
 
@@ -88,6 +90,12 @@ async function remove_product_at(id_index) {
 }
 
 
+
+
+
+
+
+
 class produtoAdicicao {
   constructor(nome, descricao = "nada", preco = 0.10,url = null) {
     this.nome = nome;
@@ -98,7 +106,7 @@ class produtoAdicicao {
 }
 
 class produtoEdicao {
-  constructor(id, nome = "",descricao = "",preco = "",url = "") {
+  constructor(id, nome = "", descricao = "",preco = "",url = "") {
     this.id = id
     this.nome = nome 
     this.desc = descricao
@@ -106,11 +114,11 @@ class produtoEdicao {
     this.img = url
   };
 
-  get return_dic() {
+  return_dic() {
     return {
       "id": this.id,
       "description": this.desc,
-      "name": this.name,
+      "name": this.nome,
       "price": this.preco,
       "image": this.img
 
@@ -129,12 +137,13 @@ async function editar_produto() {
   // console.log("Aaaaaaaa ",array_e)
   var objeto
   let id_ = document.getElementById("id_produto").value
-  let newName = document.getElementById("E_nome").value
+  // let newName = document.getElementById("E_nome").value
   
   let array_e = [
     document.getElementById("E_nome").value,
     document.getElementById("E_desc").value,
-    document.getElementById("E_preco").value
+    document.getElementById("E_preco").value,
+    document.getElementById("E_url").value
   ]
   
 
@@ -151,15 +160,42 @@ async function editar_produto() {
         id_,
         array_e[0],
         array_e[1],
-        array_e[2]
+        array_e[2],
+        array_e[3]
 
       ) 
     }
     
   })
 
-  console.log(objeto.return_dic());
+  var novo_obj = objeto.return_dic();
+  var antigo_item
+  keys.forEach(key => {
+    if (produtos[key]["id"] == novo_obj.id) {
+      console.log("a", novo_obj);
+      console.log("b", produtos[key]);
+      antigo_item = produtos[key]
+    }
+    
+  })
 
+
+  if (novo_obj.name != null && novo_obj.name != "") {
+    antigo_item.name = novo_obj.name;
+  }
+  if (novo_obj.description != null && novo_obj.description != "") {
+    antigo_item.description = novo_obj.description;
+  }
+  if (novo_obj.price != null && novo_obj.price != "") {
+    antigo_item.price = novo_obj.price;
+  }
+  if (novo_obj.image != null && novo_obj.image != "") {
+    antigo_item.image = novo_obj.image;
+  }
+
+
+  console.log("sobreescrito", antigo_item)
+  await updateProduct(antigo_item.id, antigo_item)
 }
 
 // $("#btn_editar").click(function() {
@@ -183,6 +219,7 @@ $("#addProduto").click(function() {
 
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
+  renderProducts_for_edit();
 });
 
 getProducts();
@@ -190,3 +227,26 @@ getProducts();
 // remove_product_at(3);
 // getProducts();
 // console.log("Oi")
+
+async function updateProduct(id, updatedProduct) {
+  try {
+    const response = await fetch(`http://localhost:5000/api/products/${id}`, {
+      method: 'PUT', // ou 'PATCH' dependendo da sua API
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedProduct)
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to update product: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log('Product updated:', result);
+    return result;
+  } catch (error) {
+    console.error('Error updating product:', error);
+    return null;
+  }
+}
