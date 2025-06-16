@@ -32,7 +32,13 @@ async function renderProducts() {
       <h3>${product.name || 'Produto sem nome'}</h3>
       <p>${product.description || 'Sem descrição'}</p>
       <p><b>Preço:</b> R$ ${parseFloat(product.price).toFixed(2)}</p>
+           <button class="comprar-btn">Comprar</button>
     `;
+
+    // Botão "Comprar" funcional
+    const botao = div.querySelector('.comprar-btn');
+    botao.addEventListener('click', () => adicionarAoCarrinho(product));
+    
     container.appendChild(div);  
   });
 }
@@ -250,3 +256,35 @@ async function updateProduct(id, updatedProduct) {
     return null;
   }
 }
+
+const carrinho = [];
+
+function adicionarAoCarrinho(product) {
+  carrinho.push(product);
+  atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
+  const itensDiv = document.getElementById('itens-carrinho');
+  if (!itensDiv) return;
+
+  itensDiv.innerHTML = ''; // limpa o conteúdo anterior
+
+  let total = 0;
+
+  carrinho.forEach((item) => {
+    const preco = parseFloat(item.price) || 0;
+    total += preco;
+
+    itensDiv.innerHTML += `
+      <p>${item.name} - R$ ${preco.toFixed(2)}</p>
+    `;
+  });
+
+  // Exibir o total no final do popup
+  itensDiv.innerHTML += `<hr><p><strong>Total: R$ ${total.toFixed(2)}</strong></p>`;
+}
+document.getElementById('abrir-carrinho').addEventListener('click', () => {
+  const popup = document.getElementById('carrinho-popup');
+  popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
+});

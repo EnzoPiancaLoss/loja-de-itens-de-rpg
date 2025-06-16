@@ -8,11 +8,49 @@
 </head>
 
 <body>
+
+
+
   <h1>Lista de Produtos</h1>
   <div id="product-list"></div>
+
+  <button id="abrir-carrinho" style="
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+">
+  Carrinho 🛒
+</button>
+
+<div id="carrinho-popup" style="
+  display: none;
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  width: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  z-index: 1000;
+">
+  <h3>Carrinho:</h3>
+  <div id="itens-carrinho"></div>
+</div>
   <script src="scripts/jquery-3.7.1.min.js"></script>
 
   <script src="scripts/script.js"></script>
 
 </body>
 </html>
+ 
