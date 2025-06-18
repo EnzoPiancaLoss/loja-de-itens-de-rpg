@@ -1,0 +1,177 @@
+[
+  {
+    "id": 6,
+    "name": "kit 50 fichas",
+    "description": "um kit de 50 fichas para usar em jogos de mesa",
+    "price": 15.0,
+    "image": ""
+  },
+  {
+    "id": 7,
+    "name": "Kit de 8 dados",
+    "description": "Um kit de dados de 4cm que contem 1d20, 1d16, 1d12, 1d10, 1d10%, 1d8, 1d6, 1d4. Vem junto com uma sacola",
+    "price": 20.0,
+    "image": ""
+  },
+  {
+    "id": 10,
+    "name": "Boneco elfo assasino 1/16",
+    "description": "Um boneco de um elfo em escala 1/16, sem pintura",
+    "price": 18.5,
+    "image": "C:\\Users\\enzo_\\Documents\\loja-de-itens-de-rpg-main\\loja-de-itens-de-rpg-main\\Loja_rpg2\\front\\imgs\\images.jpeg"
+  },
+  {
+    "id": 11,
+    "name": "Aneis de condicao, 8 unidades",
+    "description": "8 unidades de aneis para colocar em baixo do boneco com o objetivo de acompanhar os status do boneco",
+    "price": 20.0,
+    "image": ""
+  },
+  {
+    "id": 12,
+    "name": "Gemas de plastico",
+    "description": "Gemas feitos de plasticos de cores aleatorias",
+    "price": 1.0,
+    "image": ""
+  },
+  {
+    "id": 13,
+    "name": "Mapa de batalha dobravel",
+    "description": "Mapa quadriculado dobravel de 1x1 metro para combates tacticos",
+    "price": 25.0,
+    "image": ""
+  },
+  {
+    "id": 14,
+    "name": "Kit de pintura para miniaturas",
+    "description": "Conjunto basico com 12 cores de tinta acrilica para miniaturas",
+    "price": 30.0,
+    "image": ""
+  },
+  {
+    "id": 15,
+    "name": "Livro de regras basicas",
+    "description": "Manual completo com regras para iniciantes em RPG de mesa",
+    "price": 45.0,
+    "image": ""
+  },
+  {
+    "id": 16,
+    "name": "Torre de dados de madeira",
+    "description": "Torre elegante de madeira para rolar dados com estilo",
+    "price": 22.5,
+    "image": ""
+  },
+  {
+    "id": 17,
+    "name": "Kit 100 fichas coloridas",
+    "description": "100 fichas plasticas coloridas para marcacao em jogos",
+    "price": 18.0,
+    "image": ""
+  },
+  {
+    "id": 18,
+    "name": "Miniatura de dragao 1/20",
+    "description": "Miniatura detalhada de dragao em escala 1/20, sem pintura",
+    "price": 35.0,
+    "image": ""
+  },
+  {
+    "id": 19,
+    "name": "Marcadores de status metalicos",
+    "description": "Conjunto de 12 marcadores de status em metal para condicoes",
+    "price": 15.5,
+    "image": ""
+  },
+  {
+    "id": 20,
+    "name": "Dado critico d20",
+    "description": "Dado d20 especial que marca criticos com simbolos destacados",
+    "price": 8.0,
+    "image": ""
+  },
+  {
+    "id": 21,
+    "name": "Caixa organizadora para fichas",
+    "description": "Caixa com divisorias para organizar fichas e componentes de jogo",
+    "price": 28.0,
+    "image": ""
+  },
+  {
+    "id": 22,
+    "name": "Kit de aventura para iniciantes",
+    "description": "Pacote com dados, fichas e manual basico para novos jogadores",
+    "price": 50.0,
+    "image": ""
+  },
+  {
+    "id": 23,
+    "name": "Tabuleiro modular hexagonos",
+    "description": "30 pecas de tabuleiro hexagonal para criar mapas personalizados",
+    "price": 32.0,
+    "image": ""
+  },
+  {
+    "id": 24,
+    "name": "Conjunto de pinceis para miniaturas",
+    "description": "3 pinceis de qualidade para pintura detalhada de miniaturas",
+    "price": 12.0,
+    "image": ""
+  },
+  {
+    "id": 25,
+    "name": "Dados translucidos coloridos",
+    "description": "Conjunto de 7 dados poliedricos em cores translucidas",
+    "price": 18.0,
+    "image": ""
+  },
+  {
+    "id": 26,
+    "name": "Porta-fichas magnetico",
+    "description": "Painel magnetico para organizar fichas de personagens na mesa",
+    "price": 24.5,
+    "image": ""
+  },
+  {
+    "id": 27,
+    "name": "Miniatura de cavaleiro 1/16",
+    "description": "Cavaleiro em armadura detalhada, escala 1/16, sem pintura",
+    "price": 20.0,
+    "image": ""
+  },
+  {
+    "id": 28,
+    "name": "Kit de terreno para batalha",
+    "description": "Elementos de terreno para decorar mapas de combate",
+    "price": 40.0,
+    "image": ""
+  },
+  {
+    "id": 29,
+    "name": "Livro de aventura pronta",
+    "description": "Aventura completa para mestres, com mapas e NPCs",
+    "price": 38.0,
+    "image": ""
+  },
+  {
+    "id": 30,
+    "name": "Dados de metal premium",
+    "description": "Conjunto de 7 dados poliedricos em metal de alta qualidade",
+    "price": 65.0,
+    "image": ""
+  },
+  {
+    "id": 31,
+    "name": "Suporte para livro ajustavel",
+    "description": "Suporte metalico para manter livros abertos durante o jogo",
+    "price": 22.0,
+    "image": ""
+  },
+  {
+    "id": 32,
+    "name": "Kit de efeitos especiais para batalha",
+    "description": "Marcadores para fogo, veneno, magia e outros efeitos visuais",
+    "price": 19.5,
+    "image": ""
+  }
+]
