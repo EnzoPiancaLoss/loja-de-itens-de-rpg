@@ -77,7 +77,7 @@ async function renderProducts() {
             <button class="comprar-btn">Comprar</button>
       `;
 
-      // Botão "Comprar" funcional
+
       const botao = div.querySelector('.comprar-btn');
       botao.addEventListener('click', () => adicionarAoCarrinho(product));
       
@@ -164,8 +164,7 @@ function auto_colocar_id(d, preEncher_resto = true) {
 
 
 
-// Exemplo de uso ao exibir os dados
-//document.getElementById('product-list').innerHTML = decodeUTF8(seuTextoComAcentos);
+
 
 
 function verificarContinuacao(cancelText = "Operação cancelada") {
@@ -202,7 +201,7 @@ function atualizarCarrinho() {
     `;
   });
 
-  // Exibir o total no final do popup
+
   itensDiv.innerHTML += `<hr><p><strong>Total: R$ ${total.toFixed(2)}</strong></p>`;
 }
 
