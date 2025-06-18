@@ -2,10 +2,12 @@
 <html>
     <head>
         <title>Editar produtos</title>
+        <link rel="stylesheet" href="styles/exibir.css">
     </head>
     <body>
         <h1>Editar produtos</h1>
         <p>Colocar vazio caso queria manter os dados</p>
+        <p>Procure o produto que queria editar, clique no botão editar, e então insira os dados (Ou pode insireir diretamente o id caso queira)</p>
         <input type="number" id="id_produto" placeholder="Id do produto">
         
         <input type="text" id="E_nome" placeholder="Novo nome">
@@ -13,6 +15,10 @@
         <input type="number" id="E_preco" placeholder="Novo preco">
         <input type="text" id="E_url" placeholder="Nova img">
         <button id="btn_editar" onclick="editar_produto()">Editar</button>
+        <button id="btn_deletar" onclick="del_produto()">Deletar</button>
+
+        <h1>Lista de Produtos</h1>
+        <div id="product-list-edit"></div>
 
         <script src="scripts/jquery-3.7.1.min.js"></script>
         <script src="scripts/script.js"></script>

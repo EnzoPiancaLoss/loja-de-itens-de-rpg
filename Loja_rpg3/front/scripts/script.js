@@ -1,4 +1,22 @@
 // API CALLS
+//Remove produto na posição id_index
+async function remove_product_at(id_index) {
+  try {
+    const response = await fetch(`http://localhost:5000/api/products/${id_index}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      throw new Error(`Failed to remove product: ${response.status}`);
+    }
+
+    const result = await response.json();
+    console.log('Product removed:', result);
+  } catch (error) {
+    console.log("failed to remove: ", error)
+  }
+}
+
+
 async function getProducts() {
   try {
     const response = await fetch('http://localhost:5000/api/products');
@@ -20,30 +38,57 @@ async function getProducts() {
 async function renderProducts() {
   const products = await getProducts();  
   const container = document.getElementById('product-list');  
-  if (!container) return;
-
-  container.innerHTML = '';  
-
-  products.forEach(product => {
-    const div = document.createElement('div');   
-    div.className = 'product';
-    div.innerHTML = `
-      <img src="${product.image || 'placeholder.png'}" alt="${product.name}" width="200" />
-      <h3>${product.name || 'Produto sem nome'}</h3>
-      <p>${product.description || 'Sem descrição'}</p>
-      <p><b>Preço:</b> R$ ${parseFloat(product.price).toFixed(2)}</p>
-           <button class="comprar-btn">Comprar</button>
-    `;
-
-    // Botão "Comprar" funcional
-    const botao = div.querySelector('.comprar-btn');
-    botao.addEventListener('click', () => adicionarAoCarrinho(product));
+  const container2 = document.getElementById('product-list-edit');
+  
+  //Edição
+  if (!container || container2) {
     
-    container.appendChild(div);  
+    console.log("Edicção")
+    container2.innerHTML = '';  
+
+    products.forEach(product => {
+      const div = document.createElement('div');   
+      div.className = 'product';
+      div.innerHTML = `
+        <img src="${product.image || 'placeholder.png'}" alt="${product.name}" width="200" />
+        <h3>${product.name || 'Produto sem nome'}</h3>
+        <button class="editar-btn">Selecionar id</button>
+      `;
+      const botao = div.querySelector('.editar-btn');
+      botao.addEventListener('click', () => auto_colocar_id(product));
+     
+      
+      container2.appendChild(div);  
   });
+
+  //Exibição 
+  } else if (container || !container2) {
+    //Exibição compra
+    container.innerHTML = '';  
+
+    products.forEach(product => {
+      const div = document.createElement('div');   
+      div.className = 'product';
+      div.innerHTML = `
+        <img src="${product.image || 'placeholder.png'}" alt="${product.name}" width="200" />
+        <h3>${product.name || 'Produto sem nome'}</h3>
+        <p>${product.description || 'Sem descrição'}</p>
+        <p><b>Preço:</b> R$ ${parseFloat(product.price).toFixed(2)}</p>
+            <button class="comprar-btn">Comprar</button>
+      `;
+
+      // Botão "Comprar" funcional
+      const botao = div.querySelector('.comprar-btn');
+      botao.addEventListener('click', () => adicionarAoCarrinho(product));
+      
+      container.appendChild(div);  
+  });
+  } else if (container && !container2) {
+    return;
+  }
+
+  
 }
-
-
 
 async function saveProduct(class_object) {
   try {
@@ -78,26 +123,93 @@ async function saveProduct(class_object) {
   }
 }
 
-//Remove produto na posição id_index
-async function remove_product_at(id_index) {
+
+async function updateProduct(id, updatedProduct) {
   try {
-    const response = await fetch(`http://localhost:5000/api/products/${id_index}`, {
-      method: 'DELETE',
+    const response = await fetch(`http://localhost:5000/api/products/${id}`, {
+      method: 'PUT', // ou 'PATCH' dependendo da sua API
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedProduct)
     });
+
     if (!response.ok) {
-      throw new Error(`Failed to remove product: ${response.status}`);
+      throw new Error(`Failed to update product: ${response.status}`);
     }
 
     const result = await response.json();
-    console.log('Product removed:', result);
+    console.log('Product updated:', result);
+    return result;
   } catch (error) {
-    console.log("failed to remove: ", error)
+    console.error('Error updating product:', error);
+    return null;
   }
+}
+
+////////////////////////////////////
+
+
+//FUNÇÕES NORMAIS
+
+function auto_colocar_id(d) {
+  console.log(d)
+  document.getElementById("id_produto").value = d.id
+}
+
+
+function del_produto() {
+  let f = document.getElementById("id_produto").value
+  let d = verificarContinuacao()
+  
+  if (d) {
+    remove_product_at(f)
+  }
+}
+
+
+function verificarContinuacao(cancelText = "Operação cancelada") {
+    const resposta = confirm("Deseja realmente continuar esta operação?");
+    
+    if (resposta) {
+        
+    } else {
+        alert(cancelText);
+    }
+    return resposta
+}
+
+
+function adicionarAoCarrinho(product) {
+  carrinho.push(product);
+  atualizarCarrinho();
+}
+
+function atualizarCarrinho() {
+  const itensDiv = document.getElementById('itens-carrinho');
+  if (!itensDiv) return;
+
+  itensDiv.innerHTML = ''; // limpa o conteúdo anterior
+
+  let total = 0;
+
+  carrinho.forEach((item) => {
+    const preco = parseFloat(item.price) || 0;
+    total += preco;
+
+    itensDiv.innerHTML += `
+      <p>${item.name} - R$ ${preco.toFixed(2)}</p>
+    `;
+  });
+
+  // Exibir o total no final do popup
+  itensDiv.innerHTML += `<hr><p><strong>Total: R$ ${total.toFixed(2)}</strong></p>`;
 }
 
 
 
 
+//CLASSES
 
 
 
@@ -131,6 +243,10 @@ class produtoEdicao {
     }
   };
 }
+
+
+//ASYNCS
+
 
 async function editar_produto() {
   // if (newName == "") {
@@ -201,15 +317,20 @@ async function editar_produto() {
 
 
   console.log("sobreescrito", antigo_item)
-  await updateProduct(antigo_item.id, antigo_item)
+
+
+  let aaa = verificarContinuacao() 
+
+  if (aaa) {
+    await updateProduct(antigo_item.id, antigo_item)
+  }
+
+  
 }
 
-// $("#btn_editar").click(function() {
-//   nome()
-//   // var obj = new produtoEdicao(
 
-//   // )
-// });
+
+//ETC
 
 $("#addProduto").click(function() {
    var obj = new produtoAdicicao(
@@ -225,66 +346,23 @@ $("#addProduto").click(function() {
 
 document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
-  renderProducts_for_edit();
 });
 
-getProducts();
+
 // saveProduct();
 // remove_product_at(3);
 // getProducts();
 // console.log("Oi")
 
-async function updateProduct(id, updatedProduct) {
-  try {
-    const response = await fetch(`http://localhost:5000/api/products/${id}`, {
-      method: 'PUT', // ou 'PATCH' dependendo da sua API
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(updatedProduct)
-    });
 
-    if (!response.ok) {
-      throw new Error(`Failed to update product: ${response.status}`);
-    }
 
-    const result = await response.json();
-    console.log('Product updated:', result);
-    return result;
-  } catch (error) {
-    console.error('Error updating product:', error);
-    return null;
-  }
-}
 
-const carrinho = [];
 
-function adicionarAoCarrinho(product) {
-  carrinho.push(product);
-  atualizarCarrinho();
-}
-
-function atualizarCarrinho() {
-  const itensDiv = document.getElementById('itens-carrinho');
-  if (!itensDiv) return;
-
-  itensDiv.innerHTML = ''; // limpa o conteúdo anterior
-
-  let total = 0;
-
-  carrinho.forEach((item) => {
-    const preco = parseFloat(item.price) || 0;
-    total += preco;
-
-    itensDiv.innerHTML += `
-      <p>${item.name} - R$ ${preco.toFixed(2)}</p>
-    `;
-  });
-
-  // Exibir o total no final do popup
-  itensDiv.innerHTML += `<hr><p><strong>Total: R$ ${total.toFixed(2)}</strong></p>`;
-}
 document.getElementById('abrir-carrinho').addEventListener('click', () => {
   const popup = document.getElementById('carrinho-popup');
   popup.style.display = popup.style.display === 'none' ? 'block' : 'none';
 });
+
+
+getProducts();
+const carrinho = [];

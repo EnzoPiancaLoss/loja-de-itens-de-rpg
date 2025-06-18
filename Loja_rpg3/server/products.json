@@ -1,19 +1,5 @@
 [
   {
-    "id": 1,
-    "name": "a",
-    "description": "aaaaaaa",
-    "price": 900.0,
-    "image": "placeholder.png"
-  },
-  {
-    "id": 2,
-    "name": "Dado d8",
-    "description": "RGB backlit keyboard with blue switches.",
-    "price": 59.99,
-    "image": "placeholder.png"
-  },
-  {
     "id": 4,
     "name": "",
     "description": "",
@@ -36,9 +22,9 @@
   },
   {
     "id": 7,
-    "name": "Porduto 5",
-    "description": "Descricao 5",
-    "price": 100.0,
+    "name": "Kit de 8 dados",
+    "description": "Um kit de dados de 4cm que contem 1d20, 1d16, 1d12, 1d10, 1d10%, 1d8, 1d6, 1d4. Vem junto com uma sacola",
+    "price": 20.0,
     "image": ""
   },
   {
